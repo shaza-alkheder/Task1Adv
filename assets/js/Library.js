@@ -7,26 +7,23 @@ export default class Library {
         this.books = this.books.filter((book) => book.getId() !== id);
     }
     searchBooks(searchText) {
-        const search = searchText.toLowerCase().trim();
-        return this.books.filter((book) => book.getTitle().toLowerCase().includes(search) ||
-            book.getAuthor().toLowerCase().includes(search));
+        const searchBook = searchText.toLowerCase().trim();
+        return this.books.filter((book) => {
+            const titleSearch = book.getTitle().toLowerCase();
+            const authorSearch = book.getAuthor().toLowerCase();
+            return titleSearch.includes(searchBook) || authorSearch.includes(searchBook);
+        });
     }
     filterByCategory(category) {
-        if (category === "all") {
-            return this.books;
-        }
-        return this.books.filter((book) => book.getCategory() === category);
+        return this.books.filter((book) => category === "all" || book.getCategory() === category);
     }
     getBooks() {
-        return this.books;
-    }
-    toggleAvailability(id) {
-        const book = this.books.find((book) => book.getId() === id);
-        if (book) {
-            book.toggleAvailability();
-        }
+        return [...this.books];
     }
     getBookById(id) {
         return this.books.find((book) => book.getId() === id);
+    }
+    toggleAvailability(id) {
+        this.books.find((book) => book.getId() === id)?.toggleAvailability();
     }
 }

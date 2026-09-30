@@ -10,34 +10,29 @@ export default class Library {
     this.books = this.books.filter((book) => book.getId() !== id);
   }
 
-  searchBooks(searchText: string): Book[] {
-    const search = searchText.toLowerCase().trim();
-    return this.books.filter(
-      (book) =>
-        book.getTitle().toLowerCase().includes(search) ||
-        book.getAuthor().toLowerCase().includes(search),
-    );
-  }
+searchBooks(searchText: string): Book[] {
+  const searchBook = searchText.toLowerCase().trim();
+  return this.books.filter((book) => {
+    const titleSearch = book.getTitle().toLowerCase();
+    const authorSearch = book.getAuthor().toLowerCase();
+    return titleSearch.includes(searchBook) || authorSearch.includes(searchBook);
+  });
+}
 
-  filterByCategory(category: BookCategory | "all"): Book[] {
-    if (category === "all") {
-      return this.books;
-    }
-    return this.books.filter((book) => book.getCategory() === category);
-  }
+filterByCategory(category: BookCategory | "all"): Book[] {
+  return this.books.filter(
+    (book) => category === "all" || book.getCategory() === category
+  );
+}
   getBooks(): Book[] {
-    return this.books;
+   return [...this.books];
   }
-
-  toggleAvailability(id: number): void {
-    const book = this.books.find((book) => book.getId() === id);
-
-    if (book) {
-      book.toggleAvailability();
-    }
-  }
-
   getBookById(id: number): Book | undefined {
   return this.books.find((book) => book.getId() === id);
 }
+toggleAvailability(id: number): void {
+  this.books.find((book) => book.getId() === id)?.toggleAvailability();
+}
+
+
 }
