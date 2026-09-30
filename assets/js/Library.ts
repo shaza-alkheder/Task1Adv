@@ -6,6 +6,12 @@ export default class Library {
   addBook(book: Book): void {
     this.books.push(book);
   }
+    getBooks(): Book[] {
+   return [...this.books];
+  }
+  getBookById(id: number): Book | undefined {
+  return this.books.find((book) => book.getId() === id);
+}
   removeBook(id: number): void {
     this.books = this.books.filter((book) => book.getId() !== id);
   }
@@ -24,12 +30,7 @@ filterByCategory(category: BookCategory | "all"): Book[] {
     (book) => category === "all" || book.getCategory() === category
   );
 }
-  getBooks(): Book[] {
-   return [...this.books];
-  }
-  getBookById(id: number): Book | undefined {
-  return this.books.find((book) => book.getId() === id);
-}
+
 toggleAvailability(id: number): void {
   this.books.find((book) => book.getId() === id)?.toggleAvailability();
 }

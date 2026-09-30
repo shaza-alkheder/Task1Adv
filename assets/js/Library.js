@@ -3,6 +3,12 @@ export default class Library {
     addBook(book) {
         this.books.push(book);
     }
+    getBooks() {
+        return [...this.books];
+    }
+    getBookById(id) {
+        return this.books.find((book) => book.getId() === id);
+    }
     removeBook(id) {
         this.books = this.books.filter((book) => book.getId() !== id);
     }
@@ -16,12 +22,6 @@ export default class Library {
     }
     filterByCategory(category) {
         return this.books.filter((book) => category === "all" || book.getCategory() === category);
-    }
-    getBooks() {
-        return [...this.books];
-    }
-    getBookById(id) {
-        return this.books.find((book) => book.getId() === id);
     }
     toggleAvailability(id) {
         this.books.find((book) => book.getId() === id)?.toggleAvailability();
