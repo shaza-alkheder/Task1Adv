@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <meta name="description" content="Dashboard">
+    <meta name="keywords" content="Library , Management System, books,Dashboard">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar dashboard-navbar">
+
+            <a href="index.html" class="logo">
+
+                <img src="./assets/img/logo.png" alt="" class="logo-icon">
+                <span class="logo-text">Library</span>
+            </a>
+
+            <a href="index.html" class="nav-dashboard">
+               Back To Home
+            </a>
+        </nav>
+       
+    </header>
+    <main>
+
+    <section class="books-table">
+
+    <div class="books-table-header">
+
+        <div class="table-title">
+            <span class="section-label">LIBRARY MANAGEMENT</span>
+
+            <h1>
+                Manage Your <span>Books</span>
+            </h1>
+
+            <p>
+                View, manage and organize all books in your library.
+            </p>
+        </div>
+
+       <button id="addBookBtn" class="add-book-btn">
+    <i class="fa-solid fa-plus"></i>
+    Add Book
+</button>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table class="books-data-table">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Book</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="booksTableBody">
+              
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- Add Book Modal -->
+<div id="bookModal" class="modal-overlay bookModal">
+
+    <div class="modal-box">
+
+        <button id="closeBookModal" class="modal-close">
+            ×
+        </button>
+
+        <div class="modal-header">
+            <span class="section-label">LIBRARY MANAGEMENT</span>
+            <h2>Add New Book</h2>
+            <p>Add a new book to your library.</p>
+        </div>
+
+        <form id="bookForm" class="bookForm">
+
+            <label for="bookTitle">Title</label>
+            <input
+                type="text"
+                id="bookTitle"
+                placeholder="Book title..."
+                required
+            >
+
+            <label for="bookAuthor">Author</label>
+            <input
+                type="text"
+                id="bookAuthor"
+                placeholder="Book author..."
+                required
+            >
+
+            <label for="bookCategory">Category</label>
+            <select id="bookCategory" required>
+                <option value="" disabled selected>
+                    Select category
+                </option>
+            </select>
+
+            <label for="bookDescription">Description</label>
+            <textarea
+                id="bookDescription"
+                placeholder="Book description..."
+                required
+            ></textarea>
+
+            <label class="availability-label">
+                <input
+                    type="checkbox"
+                    id="bookAvailability"
+                    checked
+                >
+                Available
+            </label>
+
+            <label for="locationCode">
+                Location Code
+                <span>(Reference Books only)</span>
+            </label>
+
+            <input
+                type="text"
+                id="locationCode"
+                placeholder="Example: A-12"
+            >
+
+            <button type="submit" class="modal-submit">
+                <i class="fa-solid fa-plus"></i>
+                Add Book
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+<!-- Delete Book Modal -->
+<div id="deleteBookModal" class="modal-overlay deleteBookModal">
+
+    <div class="modal-box delete-modal-box">
+
+        <button id="closeDeleteModal" class="modal-close">
+            ×
+        </button>
+
+        <div class="modal-header">
+            <h2>Delete Book</h2>
+        </div>
+
+        <div class="delete-content">
+
+            <div class="delete-icon">
+                <i class="fa-regular fa-trash-can"></i>
+            </div>
+
+            <p>
+                Are you sure you want to delete this book?
+            </p>
+
+            <p class="delete-warning">
+                This action cannot be undone.
+            </p>
+
+            <div class="delete-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelDeleteBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="confirm-delete-btn"
+                    id="confirmDeleteBtn"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- View Book Modal -->
+<div id="viewBookModal" class="modal-overlay viewBookModal">
+
+    <div class="modal-box">
+
+        <button id="closeViewModal" class="modal-close">
+            ×
+        </button>
+
+        <div class="modal-header">
+            <span class="section-label">BOOK DETAILS</span>
+            <h2>Book Information</h2>
+        </div>
+
+        <div class="viewBookForm">
+
+            <label for="viewBookTitle">Title</label>
+            <input
+                type="text"
+                id="viewBookTitle"
+                readonly
+            >
+
+            <label for="viewBookAuthor">Author</label>
+            <input
+                type="text"
+                id="viewBookAuthor"
+                readonly
+            >
+
+            <label for="viewBookCategory">Category</label>
+            <input
+                type="text"
+                id="viewBookCategory"
+                readonly
+            >
+
+            <label for="viewBookDescription">Description</label>
+            <textarea
+                id="viewBookDescription"
+                readonly
+            ></textarea>
+
+            <label for="viewBookStatus">Status</label>
+            <input
+                type="text"
+                id="viewBookStatus"
+                readonly
+            >
+
+            <label for="viewBookLocation">Location</label>
+            <input
+                type="text"
+                id="viewBookLocation"
+                readonly
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+    </main>
+    <footer>
+        <div class="Copyright_footer">
+            <p>&copy; Copyright All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./assets/js/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js"
+        integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+
+</html>

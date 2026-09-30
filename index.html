@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <meta name="description" content="Library Management System">
+    <meta name="keywords" content="Library , Management System, books">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+
+                <img src="./assets/img/logo.png" alt="" class="logo-icon">
+                <span class="logo-text">Library</span>
+            </a>
+
+            <a href="dashboard.html" class="nav-dashboard">
+                Dashboard
+            </a>
+        </nav>
+        <div class="hero">
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    LIBRARY MANAGEMENT SYSTEM
+                </span>
+                <h1>
+                    Discover Your Next
+                    <span>Great Book</span>
+                </h1>
+                <p>
+                    Explore, manage and organize your books
+                    in one simple and modern library system.
+                </p>
+                <a href="#books-section" class="hero-button">
+                    Explore Library
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <section class="books-section" id="books-section">
+
+            <div class="books-header">
+                <div>
+                    <span class="section-label">OUR COLLECTION</span>
+                    <h2>Explore Our <span>Books</span></h2>
+                    <p>
+                        Browse our collection and find the perfect book
+                        for your next reading journey.
+                    </p>
+                </div>
+
+                <div class="books-filters">
+
+                    <div class="search-box">
+                        <input type="search" id="searchInput" placeholder="Search by title or author...">
+                    </div>
+
+                    <div class="category-filter">
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <!-- <option value="Programming">Programming</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Reference">Reference</option> -->
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="books" id="books">
+                <!-- <div class="book-card">
+
+                    <h2>Clean Code</h2>
+
+                    <div class="book-card-content">
+
+                        <p class="book-author">
+                            <i class="fa-regular fa-user"></i>
+                            Robert C. Martin
+                        </p>
+
+                        <p class="book-category">
+                            <span>Category:</span>
+                            Programming
+                        </p>
+
+                        <p class="book-description">
+                            A practical guide to writing clean, readable,
+                            and maintainable code.
+                        </p>
+
+                        <div class="book-availability">
+                            <span>Availability</span>
+
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>  -->
+               
+            </div>
+
+        </section>
+
+    </main>
+    <footer>
+        <div class="Copyright_footer">
+            <p>&copy; Copyright All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./assets/js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js"
+        integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+
+</html>
